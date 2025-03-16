@@ -29,10 +29,10 @@ data TeamDto = TeamDto
     name         :: String,
     iconId       :: Int,
     tier         :: Int,
-    {-Summoner ID of the team captain.-}
+    {- | Summoner ID of the team captain.-}
     captain      :: String,
     abbreviation :: String,
-    {-Team members.-}
+    {- | Team members.-}
     players      :: [PlayerDto]
   }
   deriving (Show, Eq, Generic)
@@ -44,7 +44,7 @@ data TournamentDto = TournamentDto
     themeId          :: Int,
     nameKey          :: String,
     nameKeySecondary :: String,
-    {-Tournament phase.-}
+    {- | Tournament phase.-}
     schedule         :: [TournamentPhaseDto]
   }
   deriving (Show, Eq, Generic)

@@ -9,17 +9,17 @@ import           Platforms           (Platform (..), platformToUrl)
 import           PureRiot            (TypedRequest (TypedRequest))
 
 data SummonerDTO = SummonerDTO
-  { {-Encrypted account ID. Max length 56 characters.-}
+  { {- | Encrypted account ID. Max length 56 characters.-}
     accountId     :: String,
-    {-ID of the summoner icon associated with the summoner.-}
+    {- | ID of the summoner icon associated with the summoner.-}
     profileIconId :: Int,
-    {-Date summoner was last modified specified as epoch milliseconds. The following events will update this timestamp: profile icon change, playing the tutorial or advanced tutorial, finishing a game, summoner name change-}
+    {- | Date summoner was last modified specified as epoch milliseconds. The following events will update this timestamp: profile icon change, playing the tutorial or advanced tutorial, finishing a game, summoner name change-}
     revisionDate  :: Int,
-    {-Encrypted summoner ID. Max length 63 characters.-}
+    {- | Encrypted summoner ID. Max length 63 characters.-}
     id            :: String,
-    {-Encrypted PUUID. Exact length of 78 characters.-}
+    {- | Encrypted PUUID. Exact length of 78 characters.-}
     puuid         :: String,
-    {-Summoner level associated with the summoner.-}
+    {- | Summoner level associated with the summoner.-}
     summonerLevel :: Int
   }
   deriving (Show, Eq, Generic)

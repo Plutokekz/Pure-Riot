@@ -13,18 +13,18 @@ import           PureRiot            (TypedRequest (TypedRequest))
 
 data LeagueEntryDTO = LeagueEntryDTO
   { leagueId     :: String,
-    {-Player's summonerId (Encrypted)-}
+    {- | Player's summonerId (Encrypted)-}
     summonerId   :: String,
-    {-Player's encrypted puuid.-}
+    {- | Player's encrypted puuid.-}
     puuid        :: String,
     queueType    :: String,
     tier         :: String,
-    {-The player's division within a tier.-}
+    {- | The player's division within a tier.-}
     rank         :: String,
     leaguePoints :: Int,
-    {-Winning team on Summoners Rift. First placement in Teamfight Tactics.-}
+    {- | Winning team on Summoners Rift. First placement in Teamfight Tactics.-}
     wins         :: Int,
-    {-Losing team on Summoners Rift. Second through eighth placement in Teamfight Tactics.-}
+    {- | Losing team on Summoners Rift. Second through eighth placement in Teamfight Tactics.-}
     losses       :: Int,
     hotStreak    :: Bool,
     veteran      :: Bool,

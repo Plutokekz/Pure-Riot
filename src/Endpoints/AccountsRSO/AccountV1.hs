@@ -12,9 +12,9 @@ import           Regions             (Region (..), regionToUrl)
 
 data AccountDto = AccountDto
   { puuid    :: String,
-    {-This field may be excluded from the response if the account doesn't have a gameName.-}
+    {- | This field may be excluded from the response if the account doesn't have a gameName.-}
     gameName :: String,
-    {-This field may be excluded from the response if the account doesn't have a tagLine.-}
+    {- | This field may be excluded from the response if the account doesn't have a tagLine.-}
     tagLine  :: String
   }
   deriving (Show, Eq, Generic)

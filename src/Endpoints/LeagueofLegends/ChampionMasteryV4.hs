@@ -10,26 +10,26 @@ import           Platforms           (Platform (..), platformToUrl)
 import           PureRiot            (TypedRequest (TypedRequest))
 
 data ChampionMasteryDto = ChampionMasteryDto
-  { {-Player Universal Unique Identifier. Exact length of 78 characters. (Encrypted)-}
+  { {- | Player Universal Unique Identifier. Exact length of 78 characters. (Encrypted)-}
     puuid                        :: String,
-    {-Number of points needed to achieve next level. Zero if player reached maximum champion level for this champion.-}
+    {- | Number of points needed to achieve next level. Zero if player reached maximum champion level for this champion.-}
     championPointsUntilNextLevel :: Int,
-    {-Is chest granted for this champion or not in current season.-}
+    {- | Is chest granted for this champion or not in current season.-}
     chestGranted                 :: Bool,
-    {-Champion ID for this entry.-}
+    {- | Champion ID for this entry.-}
     championId                   :: Int,
-    {-Last time this champion was played by this player - in Unix milliseconds time format.-}
+    {- | Last time this champion was played by this player - in Unix milliseconds time format.-}
     lastPlayTime                 :: Int,
-    {-Champion level for specified player and champion combination.-}
+    {- | Champion level for specified player and champion combination.-}
     championLevel                :: Int,
-    {-Total number of champion points for this player and champion combination - they are used to determine championLevel.-}
+    {- | Total number of champion points for this player and champion combination - they are used to determine championLevel.-}
     championPoints               :: Int,
-    {-Number of points earned since current level has been achieved.-}
+    {- | Number of points earned since current level has been achieved.-}
     championPointsSinceLastLevel :: Int,
     markRequiredForNextLevel     :: Int,
     championSeasonMilestone      :: Int,
     nextSeasonMilestone          :: NextSeasonMilestonesDto,
-    {-The token earned for this champion at the current championLevel. When the championLevel is advanced the tokensEarned resets to 0.-}
+    {- | The token earned for this champion at the current championLevel. When the championLevel is advanced the tokensEarned resets to 0.-}
     tokensEarned                 :: Int,
     milestoneGrades              :: [String]
   }
@@ -39,11 +39,11 @@ instance FromJSON ChampionMasteryDto
 
 data NextSeasonMilestonesDto = NextSeasonMilestonesDto
   { requireGradeCounts :: Map String Int,
-    {-Reward marks.-}
+    {- | Reward marks.-}
     rewardMarks        :: Int,
-    {-Bonus.-}
+    {- | Bonus.-}
     bonus              :: Bool,
-    {-Reward configuration.-}
+    {- | Reward configuration.-}
     rewardConfig       :: RewardConfigDto
   }
   deriving (Show, Eq, Generic)
@@ -51,11 +51,11 @@ data NextSeasonMilestonesDto = NextSeasonMilestonesDto
 instance FromJSON NextSeasonMilestonesDto
 
 data RewardConfigDto = RewardConfigDto
-  { {-Reward value-}
+  { {- | Reward value-}
     rewardValue   :: String,
-    {-Reward type-}
+    {- | Reward type-}
     rewardType    :: String,
-    {-Maximun reward-}
+    {- | Maximun reward-}
     maximumReward :: Int
   }
   deriving (Show, Eq, Generic)

@@ -34,11 +34,11 @@ instance FromJSON ContentDto
 
 data ContentItemDto = ContentItemDto
   { name           :: String,
-    {-This field is excluded from the response when a locale is set-}
+    {- | This field is excluded from the response when a locale is set-}
     localizedNames :: LocalizedNamesDto,
     id             :: String,
     assetName      :: String,
-    {-This field is only included for maps and game modes. These values are used in the match response.-}
+    {- | This field is only included for maps and game modes. These values are used in the match response.-}
     assetPath      :: String
   }
   deriving (Show, Eq, Generic)
@@ -52,7 +52,7 @@ instance FromJSON LocalizedNamesDto
 
 data ActDto = ActDto
   { name           :: String,
-    {-This field is excluded from the response when a locale is set-}
+    {- | This field is excluded from the response when a locale is set-}
     localizedNames :: LocalizedNamesDto,
     id             :: String,
     isActive       :: Bool

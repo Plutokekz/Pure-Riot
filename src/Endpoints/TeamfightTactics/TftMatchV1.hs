@@ -11,9 +11,9 @@ import           Platforms           (Platform (..), platformToUrl)
 import           PureRiot            (TypedRequest (TypedRequest))
 
 data MatchDto = MatchDto
-  { {-Match metadata.-}
+  { {- | Match metadata.-}
     metadata :: MetadataDto,
-    {-Match info.-}
+    {- | Match info.-}
     info     :: InfoDto
   }
   deriving (Show, Eq, Generic)
@@ -21,11 +21,11 @@ data MatchDto = MatchDto
 instance FromJSON MatchDto
 
 data MetadataDto = MetadataDto
-  { {-Match data version.-}
+  { {- | Match data version.-}
     data_version :: String,
-    {-Match id.-}
+    {- | Match id.-}
     match_id     :: String,
-    {-A list of participant PUUIDs.-}
+    {- | A list of participant PUUIDs.-}
     participants :: [String]
   }
   deriving (Show, Eq, Generic)
@@ -33,18 +33,18 @@ data MetadataDto = MetadataDto
 instance FromJSON MetadataDto
 
 data InfoDto = InfoDto
-  { {-Unix timestamp.-}
+  { {- | Unix timestamp.-}
     game_datetime  :: Int,
-    {-Game length in seconds.-}
+    {- | Game length in seconds.-}
     game_length    :: Double,
-    {-Game variation key. Game variations documented in TFT static data.-}
+    {- | Game variation key. Game variations documented in TFT static data.-}
     game_variation :: String,
-    {-Game client version.-}
+    {- | Game client version.-}
     game_version   :: String,
     participants   :: [ParticipantDto],
-    {-Please refer to the League of Legends documentation.-}
+    {- | Please refer to the League of Legends documentation.-}
     queue_id       :: Int,
-    {-Teamfight Tactics set number.-}
+    {- | Teamfight Tactics set number.-}
     tft_set_number :: Int
   }
   deriving (Show, Eq, Generic)
@@ -61,28 +61,28 @@ data CompanionDto = CompanionDto
 instance FromJSON CompanionDto
 
 data ParticipantDto = ParticipantDto
-  { {-Participant's companion.-}
+  { {- | Participant's companion.-}
     companion               :: CompanionDto,
-    {-Gold left after participant was eliminated.-}
+    {- | Gold left after participant was eliminated.-}
     gold_left               :: Int,
-    {-The round the participant was eliminated in. Note: If the player was eliminated in stage 2-1 their last_round would be 5.-}
+    {- | The round the participant was eliminated in. Note: If the player was eliminated in stage 2-1 their last_round would be 5.-}
     last_round              :: Int,
-    {-Participant Little Legend level. Note: This is not the number of active units.-}
+    {- | Participant Little Legend level. Note: This is not the number of active units.-}
     level                   :: Int,
-    {-Participant placement upon elimination.-}
+    {- | Participant placement upon elimination.-}
     placement               :: Int,
-    {-Number of players the participant eliminated.-}
+    {- | Number of players the participant eliminated.-}
     players_eliminated      :: Int,
     puuid                   :: String,
     riotIdGameName          :: String,
     riotIdTagline           :: String,
-    {-The Double of seconds before the participant was eliminated.-}
+    {- | The Double of seconds before the participant was eliminated.-}
     time_eliminated         :: Double,
-    {-Damage the participant dealt to other players.-}
+    {- | Damage the participant dealt to other players.-}
     total_damage_to_players :: Int,
-    {-A complete list of traits for the participant's active units.-}
+    {- | A complete list of traits for the participant's active units.-}
     traits                  :: [TraitDto],
-    {-A list of active units for the participant.-}
+    {- | A list of active units for the participant.-}
     units                   :: [UnitDto]
   }
   deriving (Show, Eq, Generic)
@@ -90,15 +90,15 @@ data ParticipantDto = ParticipantDto
 instance FromJSON ParticipantDto
 
 data TraitDto = TraitDto
-  { {-Trait name.-}
+  { {- | Trait name.-}
     name         :: String,
-    {-Number of units with this trait.-}
+    {- | Number of units with this trait.-}
     num_units    :: Int,
-    {-Current style for this trait. (0 = No style, 1 = Bronze, 2 = Silver, 3 = Gold, 4 = Chromatic)-}
+    {- | Current style for this trait. (0 = No style, 1 = Bronze, 2 = Silver, 3 = Gold, 4 = Chromatic)-}
     style        :: Int,
-    {-Current active tier for the trait.-}
+    {- | Current active tier for the trait.-}
     tier_current :: Int,
-    {-Total tiers for the trait.-}
+    {- | Total tiers for the trait.-}
     tier_total   :: Int
   }
   deriving (Show, Eq, Generic)
@@ -106,17 +106,17 @@ data TraitDto = TraitDto
 instance FromJSON TraitDto
 
 data UnitDto = UnitDto
-  { {-A list of the unit's items. Please refer to the Teamfight Tactics documentation for item ids.-}
+  { {- | A list of the unit's items. Please refer to the Teamfight Tactics documentation for item ids.-}
     items        :: [Int],
-    {-This field was introduced in patch 9.22 with data_version 2.-}
+    {- | This field was introduced in patch 9.22 with data_version 2.-}
     character_id :: String,
-    {-If a unit is chosen as part of the Fates set mechanic, the chosen trait will be indicated by this field. Otherwise this field is excluded from the response.-}
+    {- | If a unit is chosen as part of the Fates set mechanic, the chosen trait will be indicated by this field. Otherwise this field is excluded from the response.-}
     chosen       :: String,
-    {-Unit name. This field is often left blank.-}
+    {- | Unit name. This field is often left blank.-}
     name         :: String,
-    {-Unit rarity. This doesn't equate to the unit cost.-}
+    {- | Unit rarity. This doesn't equate to the unit cost.-}
     rarity       :: Int,
-    {-Unit tier.-}
+    {- | Unit tier.-}
     tier         :: Int
   }
   deriving (Show, Eq, Generic)

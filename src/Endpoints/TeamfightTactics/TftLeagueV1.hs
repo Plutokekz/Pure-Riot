@@ -12,37 +12,37 @@ import           Platforms           (Platform (..), platformToUrl)
 import           PureRiot            (TypedRequest (TypedRequest))
 
 data LeagueEntryDTO = LeagueEntryDTO
-  { {-Player Universal Unique Identifier. Exact length of 78 characters. (Encrypted)-}
+  { {- | Player Universal Unique Identifier. Exact length of 78 characters. (Encrypted)-}
     puuid        :: String,
-    {-Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | Not included for the RANKED_TFT_TURBO queueType.-}
     leagueId     :: String,
-    {-Player's encrypted summonerId.-}
+    {- | Player's encrypted summonerId.-}
     summonerId   :: String,
     queueType    :: String,
-    {-Only included for the RANKED_TFT_TURBO queueType.
+    {- | Only included for the RANKED_TFT_TURBO queueType.
              (Legal values:  ORANGE,  PURPLE,  BLUE,  GREEN,  GRAY)-}
     ratedTier    :: String,
-    {-Only included for the RANKED_TFT_TURBO queueType.-}
+    {- | Only included for the RANKED_TFT_TURBO queueType.-}
     ratedRating  :: Int,
-    {-Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | Not included for the RANKED_TFT_TURBO queueType.-}
     tier         :: String,
-    {-The player's division within a tier. Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | The player's division within a tier. Not included for the RANKED_TFT_TURBO queueType.-}
     rank         :: String,
-    {-Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | Not included for the RANKED_TFT_TURBO queueType.-}
     leaguePoints :: Int,
-    {-First placement.-}
+    {- | First placement.-}
     wins         :: Int,
-    {-Second through eighth placement.-}
+    {- | Second through eighth placement.-}
     losses       :: Int,
-    {-Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | Not included for the RANKED_TFT_TURBO queueType.-}
     hotStreak    :: Bool,
-    {-Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | Not included for the RANKED_TFT_TURBO queueType.-}
     veteran      :: Bool,
-    {-Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | Not included for the RANKED_TFT_TURBO queueType.-}
     freshBlood   :: Bool,
-    {-Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | Not included for the RANKED_TFT_TURBO queueType.-}
     inactive     :: Bool,
-    {-Not included for the RANKED_TFT_TURBO queueType.-}
+    {- | Not included for the RANKED_TFT_TURBO queueType.-}
     miniSeries   :: MiniSeriesDTO
   }
   deriving (Show, Eq, Generic)
@@ -62,7 +62,7 @@ instance FromJSON LeagueListDTO
 
 data LeagueItemDTO = LeagueItemDTO
   { freshBlood   :: Bool,
-    {-First placement.-}
+    {- | First placement.-}
     wins         :: Int,
     miniSeries   :: MiniSeriesDTO,
     inactive     :: Bool,
@@ -70,11 +70,11 @@ data LeagueItemDTO = LeagueItemDTO
     hotStreak    :: Bool,
     rank         :: String,
     leaguePoints :: Int,
-    {-Second through eighth placement.-}
+    {- | Second through eighth placement.-}
     losses       :: Int,
-    {-Player's encrypted summonerId.-}
+    {- | Player's encrypted summonerId.-}
     summonerId   :: String,
-    {-Player's encrypted puuid.-}
+    {- | Player's encrypted puuid.-}
     puuid        :: String
   }
   deriving (Show, Eq, Generic)
@@ -96,7 +96,7 @@ data TopRatedLadderEntryDto = TopRatedLadderEntryDto
     {-(Legal values:  ORANGE,  PURPLE,  BLUE,  GREEN,  GRAY)-}
     ratedTier                    :: String,
     ratedRating                  :: Int,
-    {-First placement.-}
+    {- | First placement.-}
     wins                         :: Int,
     previousUpdateLadderPosition :: Int
   }

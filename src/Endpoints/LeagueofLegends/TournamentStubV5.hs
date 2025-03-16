@@ -18,11 +18,11 @@ newtype LobbyEventV5DTOWrapper
 instance FromJSON LobbyEventV5DTOWrapper
 
 data LobbyEventV5DTO = LobbyEventV5DTO
-  { {-Timestamp from the event-}
+  { {- | Timestamp from the event-}
     timestamp :: String,
-    {-The type of event that was triggered-}
+    {- | The type of event that was triggered-}
     eventType :: String,
-    {-The puuid that triggered the event (Encrypted)-}
+    {- | The puuid that triggered the event (Encrypted)-}
     puuid     :: String
   }
   deriving (Show, Eq, Generic)
@@ -30,32 +30,32 @@ data LobbyEventV5DTO = LobbyEventV5DTO
 instance FromJSON LobbyEventV5DTO
 
 data TournamentCodeV5DTO = TournamentCodeV5DTO
-  { {-The tournament code.-}
+  { {- | The tournament code.-}
     code         :: String,
-    {-The spectator mode for the tournament code game.-}
+    {- | The spectator mode for the tournament code game.-}
     spectators   :: String,
-    {-The lobby name for the tournament code game.-}
+    {- | The lobby name for the tournament code game.-}
     lobbyName    :: String,
-    {-The metadata for tournament code.-}
+    {- | The metadata for tournament code.-}
     metaData     :: String,
-    {-The password for the tournament code game.-}
+    {- | The password for the tournament code game.-}
     password     :: String,
-    {-The team size for the tournament code game.-}
+    {- | The team size for the tournament code game.-}
     teamSize     :: Int,
-    {-The provider's ID.-}
+    {- | The provider's ID.-}
     providerId   :: Int,
-    {-The pick mode for tournament code game.-}
+    {- | The pick mode for tournament code game.-}
     pickType     :: String,
-    {-The tournament's ID.-}
+    {- | The tournament's ID.-}
     tournamentId :: Int,
-    {-The tournament code's ID.-}
+    {- | The tournament code's ID.-}
     id           :: Int,
-    {-The tournament code's region.
+    {- | The tournament code's region.
              (Legal values:  BR,  EUNE,  EUW,  JP,  LAN,  LAS,  NA,  OCE,  PBE,  RU,  TR,  KR)-}
     region       :: String,
-    {-The game map for the tournament code game-}
+    {- | The game map for the tournament code game-}
     map          :: String,
-    {-The puuids of the participants (Encrypted)-}
+    {- | The puuids of the participants (Encrypted)-}
     participants :: Set String
   }
   deriving (Show, Eq, Generic)

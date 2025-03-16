@@ -13,18 +13,18 @@ import           PureRiot            (TypedRequest (TypedRequest))
 
 data LeagueEntryDTO = LeagueEntryDTO
   { leagueId     :: String,
-    {-Player's encrypted summonerId.-}
+    {- | Player's encrypted summonerId.-}
     summonerId   :: String,
-    {-Player's encrypted puuid.-}
+    {- | Player's encrypted puuid.-}
     puuid        :: String,
     queueType    :: String,
     tier         :: String,
-    {-The player's division within a tier.-}
+    {- | The player's division within a tier.-}
     rank         :: String,
     leaguePoints :: Int,
-    {-Winning team on Summoners Rift.-}
+    {- | Winning team on Summoners Rift.-}
     wins         :: Int,
-    {-Losing team on Summoners Rift.-}
+    {- | Losing team on Summoners Rift.-}
     losses       :: Int,
     hotStreak    :: Bool,
     veteran      :: Bool,
@@ -49,7 +49,7 @@ instance FromJSON LeagueListDTO
 
 data LeagueItemDTO = LeagueItemDTO
   { freshBlood   :: Bool,
-    {-Winning team on Summoners Rift.-}
+    {- | Winning team on Summoners Rift.-}
     wins         :: Int,
     miniSeries   :: MiniSeriesDTO,
     inactive     :: Bool,
@@ -57,11 +57,11 @@ data LeagueItemDTO = LeagueItemDTO
     hotStreak    :: Bool,
     rank         :: String,
     leaguePoints :: Int,
-    {-Losing team on Summoners Rift.-}
+    {- | Losing team on Summoners Rift.-}
     losses       :: Int,
-    {-Player's encrypted summonerId.-}
+    {- | Player's encrypted summonerId.-}
     summonerId   :: String,
-    {-Player's encrypted puuid.-}
+    {- | Player's encrypted puuid.-}
     puuid        :: String
   }
   deriving (Show, Eq, Generic)

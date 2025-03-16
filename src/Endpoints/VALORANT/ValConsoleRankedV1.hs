@@ -9,11 +9,11 @@ import           Platforms           (Platform (..), platformToUrl)
 import           PureRiot            (TypedRequest (TypedRequest))
 
 data LeaderboardDto = LeaderboardDto
-  { {-The shard for the given leaderboard.-}
+  { {- | The shard for the given leaderboard.-}
     shard        :: String,
-    {-The act id for the given leaderboard. Act ids can be found using the val-content API.-}
+    {- | The act id for the given leaderboard. Act ids can be found using the val-content API.-}
     actId        :: String,
-    {-The total number of players in the leaderboard.-}
+    {- | The total number of players in the leaderboard.-}
     totalPlayers :: Int,
     players      :: [PlayerDto]
   }
@@ -22,11 +22,11 @@ data LeaderboardDto = LeaderboardDto
 instance FromJSON LeaderboardDto
 
 data PlayerDto = PlayerDto
-  { {-This field may be omitted if the player has been anonymized.-}
+  { {- | This field may be omitted if the player has been anonymized.-}
     puuid           :: String,
-    {-This field may be omitted if the player has been anonymized.-}
+    {- | This field may be omitted if the player has been anonymized.-}
     gameName        :: String,
-    {-This field may be omitted if the player has been anonymized.-}
+    {- | This field may be omitted if the player has been anonymized.-}
     tagLine         :: String,
     leaderboardRank :: Int,
     rankedRating    :: Int,

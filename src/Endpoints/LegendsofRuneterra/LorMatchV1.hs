@@ -9,9 +9,9 @@ import           Platforms           (Platform (..), platformToUrl)
 import           PureRiot            (TypedRequest (TypedRequest))
 
 data MatchDto = MatchDto
-  { {-Match metadata.-}
+  { {- | Match metadata.-}
     metadata :: MetadataDto,
-    {-Match info.-}
+    {- | Match info.-}
     info     :: InfoDto
   }
   deriving (Show, Eq, Generic)
@@ -19,11 +19,11 @@ data MatchDto = MatchDto
 instance FromJSON MatchDto
 
 data MetadataDto = MetadataDto
-  { {-Match data version.-}
+  { {- | Match data version.-}
     data_version :: String,
-    {-Match id.-}
+    {- | Match id.-}
     match_id     :: String,
-    {-A list of participant PUUIDs.-}
+    {- | A list of participant PUUIDs.-}
     participants :: [String]
   }
   deriving (Show, Eq, Generic)
@@ -40,7 +40,7 @@ data InfoDto = InfoDto
     {-(Legal values:  standard,  eternal)-}
     game_format         :: String,
     players             :: [PlayerDto],
-    {-Total turns taken by both players.-}
+    {- | Total turns taken by both players.-}
     total_turn_count    :: Int
   }
   deriving (Show, Eq, Generic)
@@ -50,11 +50,11 @@ instance FromJSON InfoDto
 data PlayerDto = PlayerDto
   { puuid         :: String,
     deck_id       :: String,
-    {-Code for the deck played. Refer to LOR documentation for details on deck codes.-}
+    {- | Code for the deck played. Refer to LOR documentation for details on deck codes.-}
     deck_code     :: String,
     factions      :: [String],
     game_outcome  :: String,
-    {-The order in which the players took turns.-}
+    {- | The order in which the players took turns.-}
     order_of_play :: Int
   }
   deriving (Show, Eq, Generic)

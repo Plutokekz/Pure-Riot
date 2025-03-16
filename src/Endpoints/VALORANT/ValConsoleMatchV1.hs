@@ -86,12 +86,12 @@ data CoachDto = CoachDto
 instance FromJSON CoachDto
 
 data TeamDto = TeamDto
-  { {-This is an arbitrary string. Red and Blue in bomb modes. The puuid of the player in deathmatch.-}
+  { {- | This is an arbitrary string. Red and Blue in bomb modes. The puuid of the player in deathmatch.-}
     teamId       :: String,
     won          :: Bool,
     roundsPlayed :: Int,
     roundsWon    :: Int,
-    {-Team points scored. Number of kills in deathmatch.-}
+    {- | Team points scored. Number of kills in deathmatch.-}
     numPoints    :: Int
   }
   deriving (Show, Eq, Generic)
@@ -103,9 +103,9 @@ data RoundResultDto = RoundResultDto
     roundResult           :: String,
     roundCeremony         :: String,
     winningTeam           :: String,
-    {-PUUID of player-}
+    {- | PUUID of player-}
     bombPlanter           :: String,
-    {-PUUID of player-}
+    {- | PUUID of player-}
     bombDefuser           :: String,
     plantRoundTime        :: Int,
     plantPlayerLocations  :: [PlayerLocationsDto],
@@ -153,12 +153,12 @@ instance FromJSON PlayerRoundStatsDto
 data KillDto = KillDto
   { timeSinceGameStartMillis  :: Int,
     timeSinceRoundStartMillis :: Int,
-    {-PUUID-}
+    {- | PUUID-}
     killer                    :: String,
-    {-PUUID-}
+    {- | PUUID-}
     victim                    :: String,
     victimLocation            :: LocationDto,
-    {-List of PUUIDs-}
+    {- | List of PUUIDs-}
     assistants                :: [String],
     playerLocations           :: [PlayerLocationsDto],
     finishingDamage           :: FinishingDamageDto
@@ -177,7 +177,7 @@ data FinishingDamageDto = FinishingDamageDto
 instance FromJSON FinishingDamageDto
 
 data DamageDto = DamageDto
-  { {-PUUID-}
+  { {- | PUUID-}
     receiver  :: String,
     damage    :: Int,
     legshots  :: Int,
@@ -228,7 +228,7 @@ instance FromJSON MatchlistEntryDto
 
 data RecentMatchesDto = RecentMatchesDto
   { currentTime :: Int,
-    {-A list of recent match ids.-}
+    {- | A list of recent match ids.-}
     matchIds    :: [String]
   }
   deriving (Show, Eq, Generic)
