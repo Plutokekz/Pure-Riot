@@ -39,6 +39,7 @@ cabal build --flag=league-of-legends --flag=account --flag=-all-endpoints
 # TODO 
 
 - [ ] Rate Limiting
+- [ ] Add optional rerquest paramters
 - [ ] Tests
     - [ ] life 
     - [ ] stubbed 
