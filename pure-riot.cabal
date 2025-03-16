@@ -1,0 +1,141 @@
+cabal-version:   3.0
+name:            pure-riot
+version:         0.1.0.0
+license:         GPL-2.0-or-later
+license-file:    LICENSE
+author:          Lukas Mahr
+maintainer:      lukas@yousuckatprogramming.de
+category:        Api
+build-type:      Simple
+extra-doc-files: CHANGELOG.md
+
+flag account
+  description: Include account endpoints
+  default:     False
+
+flag league-of-legends
+  description: Include league-of-legends endpoints
+  default:     False
+
+flag league-of-legends-rso
+  description: Include league-of-legends-rso endpoints
+  default:     False
+
+flag league-of-legends-tournaments
+  description: Include league-of-legends-tournaments endpoints
+  default:     False
+
+flag legends-of-runterra
+  description: Include legends-of-runterra endpoints
+  default:     False
+
+flag legends-of-runterra-rso
+  description: Include legends-of-runterra-rso endpoints
+  default:     False
+
+flag teamfight-tactics
+  description: Include teamfight-tactics endpoints
+  default:     False
+
+flag teamfight-tactics-rso
+  description: Include teamfight-tactics-rso endpoints
+  default:     False
+
+flag valorant
+  description: Include valorant endpoints
+  default:     False
+
+flag all-endpoints
+  description: Include all endpoints
+  default:     True
+
+common warnings
+  ghc-options: -Wall
+
+library
+  import:           warnings
+  exposed-modules:
+    Platforms
+    PureRiot
+    Regions
+
+  if (flag(account) || flag(all-endpoints))
+    exposed-modules: Endpoints.AccountsRSO.AccountV1
+
+  if (flag(league-of-legends) || flag(all-endpoints))
+    exposed-modules:
+      Endpoints.LeagueofLegends.ChampionMasteryV4
+      Endpoints.LeagueofLegends.ChampionV3
+      Endpoints.LeagueofLegends.ClashV1
+      Endpoints.LeagueofLegends.LeagueExpV4
+      Endpoints.LeagueofLegends.LeagueV4
+      Endpoints.LeagueofLegends.LolChallengesV1
+      Endpoints.LeagueofLegends.LolStatusV4
+      Endpoints.LeagueofLegends.MatchV5
+      Endpoints.LeagueofLegends.SpectatorV5
+      Endpoints.LeagueofLegends.SummonerV4
+      Endpoints.LeagueofLegends.TournamentStubV5
+
+  if (flag(league-of-legends-rso) || flag(all-endpoints))
+    exposed-modules: Endpoints.LeagueofLegendsRSO.LolRsoMatchV1
+
+  if (flag(league-of-legends-tournaments) || flag(all-endpoints))
+    exposed-modules: Endpoints.LeagueofLegendsTournaments.TournamentV5
+
+  if (flag(legends-of-runterra) || flag(all-endpoints))
+    exposed-modules:
+      Endpoints.LegendsofRuneterra.LorMatchV1
+      Endpoints.LegendsofRuneterra.LorRankedV1
+      Endpoints.LegendsofRuneterra.LorStatusV1
+
+  if (flag(legends-of-runterra-rso) || flag(all-endpoints))
+    exposed-modules:
+      Endpoints.LegendsofRuneterraRSO.LorDeckV1
+      Endpoints.LegendsofRuneterraRSO.LorInventoryV1
+
+  if (flag(teamfight-tactics) || flag(all-endpoints))
+    exposed-modules:
+      Endpoints.TeamfightTactics.SpectatorTftV5
+      Endpoints.TeamfightTactics.TftLeagueV1
+      Endpoints.TeamfightTactics.TftMatchV1
+      Endpoints.TeamfightTactics.TftStatusV1
+
+  if (flag(teamfight-tactics-rso) || flag(all-endpoints))
+    exposed-modules: Endpoints.TeamfightTacticsRSO.TftSummonerV1
+
+  if (flag(valorant) || flag(all-endpoints))
+    exposed-modules:
+      Endpoints.VALORANT.ValConsoleMatchV1
+      Endpoints.VALORANT.ValConsoleRankedV1
+      Endpoints.VALORANT.ValContentV1
+      Endpoints.VALORANT.ValMatchV1
+      Endpoints.VALORANT.ValRankedV1
+      Endpoints.VALORANT.ValStatusV1
+
+  build-depends:
+    , aeson
+    , base              ^>=4.17.2.1
+    , bytestring
+    , case-insensitive
+    , containers
+    , http-client
+    , http-client-tls
+    , http-types
+
+  hs-source-dirs:   src
+  default-language: GHC2021
+
+test-suite riot-api-test
+  import:             warnings
+  default-language:   GHC2021
+  type:               exitcode-stdio-1.0
+  hs-source-dirs:     test
+  main-is:            Spec.hs
+  build-depends:
+    , base         ^>=4.17.2.1
+    , hspec        ^>=2.11.10
+    , http-client
+    , riot-api
+
+  build-tool-depends: hspec-discover:hspec-discover ==2.11.10
+  other-modules:      Endpoints.AccountRSO.AccountV1Spec
